@@ -1,9 +1,3 @@
-/**
- * Veloce.js Omniverse Pro — Expanded zero-dependency JavaScript game library.
- * Includes 0D–5D math & projections, raycasting, noise & room generation,
- * tweens & springs, gamepad polling, input buffering, save slots, and core game loop.
- */
-
 export const MathEx = {
   clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
