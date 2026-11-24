@@ -76,9 +76,6 @@ export const Ease = {
   },
 };
 
-/* ============================================================================
- * 0D: Scalar / Point Anchor
- * ========================================================================== */
 export class Point0D {
   constructor(value = 0, label = 'point0d') {
     this.value = value;
@@ -89,9 +86,6 @@ export class Point0D {
   project(w = 800, h = 600) { return { x: w / 2, y: h / 2, scale: 1, depth: 0 }; }
 }
 
-/* ============================================================================
- * 1D: Line / Axis
- * ========================================================================== */
 export class Vec1D {
   constructor(x = 0) { this.x = x; }
   clone() { return new Vec1D(this.x); }
@@ -132,9 +126,6 @@ export class Line1DNode {
   }
 }
 
-/* ============================================================================
- * 2D: Cartesian Vector & Geometry
- * ========================================================================== */
 export class Vector2 {
   constructor(x = 0, y = 0) { this.x = x; this.y = y; }
   clone() { return new Vector2(this.x, this.y); }
@@ -180,7 +171,6 @@ export const Geometry2D = {
     }
     return inside;
   },
-  /** Returns { hit, t, x, y } or null for a ray against an axis-aligned box { x, y, w, h } */
   raycastBox(origin, dir, maxDist, box) {
     const nDir = dir.normalize();
     if (nDir.magSq() === 0) return null;
@@ -205,9 +195,6 @@ export const Geometry2D = {
   },
 };
 
-/* ============================================================================
- * 2.5D: Ground (x, y) + Elevation (z)
- * ========================================================================== */
 export class Vec25D {
   constructor(x = 0, y = 0, z = 0) { this.x = x; this.y = y; this.z = z; }
   clone() { return new Vec25D(this.x, this.y, this.z); }
@@ -274,9 +261,6 @@ export class Entity25D {
   }
 }
 
-/* ============================================================================
- * 3D: Euclidean Space (x, y, z)
- * ========================================================================== */
 export class Vec3D {
   constructor(x = 0, y = 0, z = 0) { this.x = x; this.y = y; this.z = z; }
   clone() { return new Vec3D(this.x, this.y, this.z); }
@@ -337,9 +321,6 @@ export class Cube3D {
   }
 }
 
-/* ============================================================================
- * 4D: Hyper-Space (x, y, z, w)
- * ========================================================================== */
 export class Vec4D {
   constructor(x = 0, y = 0, z = 0, w = 0) { this.x = x; this.y = y; this.z = z; this.w = w; }
   clone() { return new Vec4D(this.x, this.y, this.z, this.w); }
@@ -396,9 +377,6 @@ export class Tesseract4D {
   }
 }
 
-/* ============================================================================
- * 5D: Five-Dimensional Space (x, y, z, w, v)
- * ========================================================================== */
 export class Vec5D {
   constructor(x = 0, y = 0, z = 0, w = 0, v = 0) { this.x = x; this.y = y; this.z = z; this.w = w; this.v = v; }
   clone() { return new Vec5D(this.x, this.y, this.z, this.w, this.v); }
@@ -455,9 +433,6 @@ export class Penteract5D {
   }
 }
 
-/* ============================================================================
- * Procedural Noise, Dungeon Rooms, Tweens & Springs
- * ========================================================================== */
 export class ValueNoise2D {
   constructor(seed = 1337) {
     this.seed = seed >>> 0;
@@ -550,9 +525,6 @@ export class Spring1D {
   }
 }
 
-/* ============================================================================
- * Core Systems: Events, StateMachine, Timer, Input, Sound, Particles, Tilemap, UI
- * ========================================================================== */
 export class EventBus {
   constructor() { this.listeners = new Map(); }
   on(event, fn) {
