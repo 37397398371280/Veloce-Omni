@@ -21,4 +21,4 @@ jobs:
           package-manager-cache: false
 
       - run: npm install -g npm@latest
-      - run: npm stage publish --tag alpha
+      - run: npm stage publish
