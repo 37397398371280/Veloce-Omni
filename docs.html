@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veloce.js Omniverse Pro — Exhaustive Additions Reference (docs.html)</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: #111827;
+      --panel-2: #162033;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-2: #a855f7;
+      --border: #263248;
+      --code-bg: #070a10;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 20px 16px;
+    }
+
+    aside h1 {
+      font-size: 1.05rem;
+      margin: 0 0 4px;
+      color: #fff;
+    }
+
+    aside .sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .nav-group {
+      margin-bottom: 16px;
+    }
+
+    .nav-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      padding-left: 8px;
+    }
+
+    aside a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.86rem;
+      padding: 5px 8px;
+      border-radius: 6px;
+      margin-bottom: 2px;
+    }
+
+    aside a:hover {
+      background: var(--panel-2);
+      color: var(--accent);
+    }
+
+    main {
+      padding: 32px 40px 88px;
+      max-width: 1120px;
+    }
+
+    header.hero {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.12));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    header.hero h2 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    header.hero p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    section {
+      margin-bottom: 44px;
+      scroll-margin-top: 20px;
+    }
+
+    section > h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin: 0 0 14px;
+    }
+
+    .api-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .api-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .api-name {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--panel-2);
+      color: var(--accent-2);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.87rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    ul.detail-list {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    ul.detail-list li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--code-bg);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #93c5fd;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      main { padding: 20px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h1>Veloce.js Omniverse Pro</h1>
+      <div class="sub">Exhaustive Additions Reference (docs.html)</div>
+
+      <div class="nav-group">
+        <div class="nav-title">1. 2D Geometry &amp; Raycasting</div>
+        <a href="#geometry2d">Geometry2D Namespace</a>
+        <a href="#geom-circles">circlesOverlap</a>
+        <a href="#geom-poly">pointInPolygon</a>
+        <a href="#geom-ray">raycastBox</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-title">2. Procedural Generation</div>
+        <a href="#noise2d">ValueNoise2D Class</a>
+        <a href="#dungeon">generateDungeonGrid Function</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-title">3. Tweens &amp; Springs</div>
+        <a href="#tween">Tween Class</a>
+        <a href="#spring1d">Spring1D Class</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-title">4. Input &amp; Save Slots</div>
+        <a href="#input-buffer">Input Buffering</a>
+        <a href="#input-gamepad">Gamepad Polling &amp; Input.update</a>
+        <a href="#storage">Storage Slots</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-title">5. Multi-D Vectors</div>
+        <a href="#vec1d">Vec1D Additions</a>
+        <a href="#vec3d">Vec3D Additions</a>
+        <a href="#vec4d">Vec4D Additions</a>
+        <a href="#vec5d">Vec5D Additions</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-title">6. Scene &amp; Game Hooks</div>
+        <a href="#scene-tweens">Scene Tween Management</a>
+        <a href="#game-tweens">Game Scene Switch Reset</a>
+      </div>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <h2>Veloce.js Omniverse Pro — Complete Additions Specification</h2>
+        <p>
+          Full technical text documentation covering every class, namespace, function, method, property,
+          parameter signature, return type, mathematical rule, and edge case added in the
+          <code>veloce-omni-pro.js</code> update over <code>veloce-omni.js</code>.
+        </p>
+      </header>
+
+      <!-- 1. GEOMETRY2D -->
+      <section id="geometry2d">
+        <h3>1. 2D Geometry &amp; Raycasting (<code>Geometry2D</code>)</h3>
+
+        <div class="api-card">
+          <div class="api-header">
+            <span class="api-name">Geometry2D</span>
+            <span class="badge">Exported Object / Static Namespace</span>
+          </div>
+          <p>
+            Stateless 2D geometric query utilities for fast collision tests, polygon hit-testing, and ray
+            intersection against axis-aligned bounding boxes without allocating rigid bodies or physics entities.
+          </p>
+
+          <h4 id="geom-circles"><code>Geometry2D.circlesOverlap(a, b)</code></h4>
+          <table>
+            <thead>
+              <tr><th>Aspect</th><th>Specification</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Signature</td><td><code>(a: { x: number, y: number, radius: number }, b: { x: number, y: number, radius: number }) =&gt; boolean</code></td></tr>
+              <tr><td>Formula</td><td>Computes <code>dx = a.x - b.x</code>, <code>dy = a.y - b.y</code>, and <code>r = a.radius + b.radius</code>, returning <code>dx * dx + dy * dy &lt;= r * r</code>.</td></tr>
+              <tr><td>Return Value</td><td><code>true</code> if the two circles touch or overlap (inclusive boundary), otherwise <code>false</code>.</td></tr>
+              <tr><td>Notes &amp; Edge Cases</td><td>Uses squared distance to avoid <code>Math.hypot</code>/<code>Math.sqrt</code> overhead. Negative or zero radii follow the same algebraic inequality directly.</td></tr>
+            </tbody>
+          </table>
+
+          <h4 id="geom-poly"><code>Geometry2D.pointInPolygon(pt, poly)</code></h4>
+          <table>
+            <thead>
+              <tr><th>Aspect</th><th>Specification</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Signature</td><td><code>(pt: { x: number, y: number }, poly: Array&lt;{ x: number, y: number }&gt;) =&gt; boolean</code></td></tr>
+              <tr><td>Algorithm</td><td>Iterates edges from vertex <code>j</code> to vertex <code>i</code> (starting with <code>j = poly.length - 1</code>, <code>i = 0</code>). Checks whether the horizontal ray from <code>pt</code> toward <code>+X</code> crosses each edge using <code>((yi &gt; pt.y) !== (yj &gt; pt.y)) &amp;&amp; (pt.x &lt; ((xj - xi) * (pt.y - yi)) / ((yj - yi) || 1e-9) + xi)</code>, toggling <code>inside</code> on each crossing.</td></tr>
+              <tr><td>Return Value</td><td><code>true</code> if odd number of boundary crossings (inside), <code>false</code> if even (outside) or if <code>poly</code> is empty.</td></tr>
+              <tr><td>Notes &amp; Edge Cases</td><td>Works for both convex and concave simple polygons, clockwise or counter-clockwise winding. Uses <code>1e-9</code> fallback denominator to prevent <code>NaN</code>/<code>Infinity</code> on near-horizontal edges; points lying directly on an edge or vertex may return either <code>true</code> or <code>false</code> depending on floating-point rounding.</td></tr>
+            </tbody>
+          </table>
+
+          <h4 id="geom-ray"><code>Geometry2D.raycastBox(origin, dir, maxDist, box)</code></h4>
+          <table>
+            <thead>
+              <tr><th>Aspect</th><th>Specification</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Signature</td><td><code>(origin: Vector2, dir: Vector2, maxDist: number, box: { x: number, y: number, w: number, h: number }) =&gt; { hit: true, t: number, x: number, y: number } | null</code></td></tr>
+              <tr><td>Algorithm</td><td>Normalizes <code>dir</code> via <code>dir.normalize()</code> into <code>nDir</code>. Computes slab entry/exit distances along X and Y using inverse components (<code>1e9</code> fallback when a component is <code>0</code>), finds <code>tmin = Math.max(Math.min(t1, t2), Math.min(t3, t4))</code> and <code>tmax = Math.min(Math.max(t1, t2), Math.max(t3, t4))</code>.</td></tr>
+              <tr><td>Return Value</td><td>When hit within range, returns <code>{ hit: true, t: tmin, x: origin.x + nDir.x * tmin, y: origin.y + nDir.y * tmin }</code>. Otherwise returns <code>null</code>.</td></tr>
+              <tr><td>Conditions Returning <code>null</code></td><td><code>nDir.magSq() === 0</code> (zero-length direction), <code>tmax &lt; 0</code>, <code>tmin &gt; tmax</code> (ray misses box slabs), <code>tmin &gt; maxDist</code> (hit beyond maximum ray distance), or <code>tmin &lt; 0</code> (box starts behind or around <code>origin</code> such that entry <code>t</code> is negative).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2. PROCEDURAL GENERATION -->
+      <section id="noise2d">
+        <h3>2. Procedural Generation (<code>ValueNoise2D</code> &amp; <code>generateDungeonGrid</code>)</h3>
+
+        <div class="api-card">
+          <div class="api-header">
+            <span class="api-name">ValueNoise2D</span>
+            <span class="badge">Exported Class</span>
+          </div>
+          <p>
+            Deterministic 2D lattice value noise generator. Hashes integer grid coordinates with a 32-bit
+            unsigned seed and interpolates corner values using a cubic smoothstep curve.
+          </p>
+          <table>
+            <thead>
+              <tr><th>Member</th><th>Signature / Type</th><th>Detailed Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>constructor(seed = 1337)</code></td><td><code>(seed?: number) =&gt; ValueNoise2D</code></td><td>Coerces <code>seed</code> to an unsigned 32-bit integer via <code>seed &gt;&gt;&gt; 0</code> and stores it on <code>this.seed</code>.</td></tr>
+              <tr><td><code>seed</code></td><td><code>number</code></td><td>Unsigned 32-bit integer seed controlling spatial hash output.</td></tr>
+              <tr><td><code>_hash(x, y)</code></td><td><code>(x: number, y: number) =&gt; number</code></td><td>Internal hash combining integer <code>x</code>, <code>y</code>, and <code>this.seed</code> with 32-bit integer multiplication and xorshift mixing, returning a normalized float in <code>[0, 1)</code> (<code>&gt;&gt;&gt; 0) / 4294967295</code>).</td></tr>
+              <tr><td><code>sample(x, y)</code></td><td><code>(x: number, y: number) =&gt; number</code></td><td>Computes integer cell <code>(xi, yi) = (Math.floor(x), Math.floor(y))</code> and fractional offsets <code>(xf, yf) = (x - xi, y - yi)</code>. Applies smoothstep easing <code>u = xf * xf * (3 - 2 * xf)</code> and <code>v = yf * yf * (3 - 2 * yf)</code> across the four lattice corners <code>a=(xi,yi)</code>, <code>b=(xi+1,yi)</code>, <code>c=(xi,yi+1)</code>, <code>d=(xi+1,yi+1)</code> using <code>MathEx.lerp(MathEx.lerp(a, b, u), MathEx.lerp(c, d, u), v)</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="dungeon">
+          <div class="api-header">
+            <span class="api-name">generateDungeonGrid(options?)</span>
+            <span class="badge">Exported Function</span>
+          </div>
+          <p>
+            Generates a rectangular tile grid containing carved rooms and connecting corridors. Wall tiles are
+            <code>1</code> and walkable floor tiles are <code>0</code>.
+          </p>
+          <table>
+            <thead>
+              <tr><th>Parameter / Option</th><th>Type &amp; Default</th><th>Detailed Behavior</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>cols</code></td><td><code>number = 24</code></td><td>Number of columns in the returned 2D grid (width in tiles).</td></tr>
+              <tr><td><code>rows</code></td><td><code>number = 18</code></td><td>Number of rows in the returned 2D grid (height in tiles).</td></tr>
+              <tr><td><code>roomCount</code></td><td><code>number = 6</code></td><td>Target number of rooms to place; placement runs up to <code>roomCount * 6</code> total attempts.</td></tr>
+              <tr><td><code>minSize</code></td><td><code>number = 3</code></td><td>Minimum room width and height in tiles.</td></tr>
+              <tr><td><code>maxSize</code></td><td><code>number = 6</code></td><td>Maximum room width and height in tiles (clamped internally against <code>cols - 4</code> and <code>rows - 4</code>).</td></tr>
+            </tbody>
+          </table>
+          <ul class="detail-list">
+            <li><strong>Initialization:</strong> Allocates a <code>rows</code>-by-<code>cols</code> array filled with <code>1</code> (walls) and an empty <code>rooms</code> list.</li>
+            <li><strong>Room Placement &amp; Spacing:</strong> Picks random dimensions <code>w</code> and <code>h</code> and top-left coordinates <code>x</code> in <code>[1, cols - w - 2]</code>, <code>y</code> in <code>[1, rows - h - 2]</code>. Rejects candidate rooms that overlap any existing room expanded by a 1-tile margin on all sides (<code>x &lt; r.x + r.w + 1 &amp;&amp; x + w + 1 &gt; r.x &amp;&amp; y &lt; r.y + r.h + 1 &amp;&amp; y + h + 1 &gt; r.y</code>).</li>
+            <li><strong>Room Carving &amp; Centers:</strong> Appends <code>{ x, y, w, h, cx: Math.floor(x + w / 2), cy: Math.floor(y + h / 2) }</code> to <code>rooms</code> and sets <code>grid[ry][rx] = 0</code> across the room interior.</li>
+            <li><strong>Corridor Tunneling:</strong> For each subsequent room <code>i</code> from <code>1</code> to <code>rooms.length - 1</code>, carves a horizontal tunnel from <code>prev.cx</code> to <code>curr.cx</code> along row <code>prev.cy</code>, then a vertical tunnel from <code>prev.cy</code> to <code>curr.cy</code> along column <code>curr.cx</code>, setting traversed cells to <code>0</code>.</li>
+            <li><strong>Return Value:</strong> Object <code>{ grid, rooms }</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. TWEENS & SPRINGS -->
+      <section id="tween">
+        <h3>3. Motion &amp; Interpolation (<code>Tween</code> &amp; <code>Spring1D</code>)</h3>
+
+        <div class="api-card">
+          <div class="api-header">
+            <span class="api-name">Tween</span>
+            <span class="badge">Exported Class</span>
+          </div>
+          <p>
+            Time-based single-property interpolator that mutates <code>target[prop]</code> each frame using a
+            normalized progress value passed through an easing function.
+          </p>
+          <table>
+            <thead>
+              <tr><th>Property / Constructor Field</th><th>Type &amp; Default</th><th>Detailed Behavior</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>target</code></td><td><code>object</code> (required)</td><td>Object reference whose property <code>prop</code> is updated.</td></tr>
+              <tr><td><code>prop</code></td><td><code>string</code> (required)</td><td>Property key on <code>target</code>.</td></tr>
+              <tr><td><code>from</code></td><td><code>number</code></td><td>Captured automatically at construction from <code>target[prop]</code>.</td></tr>
+              <tr><td><code>to</code></td><td><code>number</code> (required)</td><td>Target value reached when normalized progress hits <code>1</code>.</td></tr>
+              <tr><td><code>duration</code></td><td><code>number = 0.5</code></td><td>Total tween duration in seconds, clamped via <code>Math.max(0.001, duration)</code>.</td></tr>
+              <tr><td><code>ease</code></td><td><code>function = Ease.outQuad</code></td><td>Easing curve mapping <code>rawT</code> in <code>[0, 1]</code> to eased progress.</td></tr>
+              <tr><td><code>onComplete</code></td><td><code>function | null = null</code></td><td>Called once when <code>rawT &gt;= 1</code>, immediately after setting <code>this.finished = true</code>.</td></tr>
+              <tr><td><code>elapsed</code></td><td><code>number = 0</code></td><td>Accumulated time in seconds since tween start.</td></tr>
+              <tr><td><code>finished</code></td><td><code>boolean = false</code></td><td>Becomes <code>true</code> upon completion; once <code>true</code>, <code>update(dt)</code> returns immediately without re-firing <code>onComplete</code>.</td></tr>
+              <tr><td><code>update(dt)</code></td><td><code>(dt: number) =&gt; void</code></td><td>Adds <code>dt</code> to <code>elapsed</code>, computes <code>rawT = MathEx.clamp(this.elapsed / this.duration, 0, 1)</code>, sets <code>this.target[this.prop] = MathEx.lerp(this.from, this.to, this.ease(rawT))</code>, and marks <code>finished = true</code> when <code>rawT &gt;= 1</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="spring1d">
+          <div class="api-header">
+            <span class="api-name">Spring1D</span>
+            <span class="badge">Exported Class</span>
+          </div>
+          <p>
+            Semi-implicit Euler 1D damped spring oscillator pulling <code>value</code> toward <code>target</code>.
+          </p>
+          <table>
+            <thead>
+              <tr><th>Property / Option</th><th>Type &amp; Default</th><th>Detailed Behavior</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>value</code></td><td><code>number = 0</code></td><td>Current scalar state/position of the spring.</td></tr>
+              <tr><td><code>target</code></td><td><code>number = value</code></td><td>Equilibrium target value toward which the spring accelerates.</td></tr>
+              <tr><td><code>vel</code></td><td><code>number = 0</code></td><td>Current velocity in units per second.</td></tr>
+              <tr><td><code>stiffness</code></td><td><code>number = 180</code></td><td>Spring constant <code>k</code> scaling displacement <code>(this.target - this.value)</code>.</td></tr>
+              <tr><td><code>damping</code></td><td><code>number = 14</code></td><td>Damping coefficient <code>c</code> opposing velocity <code>this.vel</code>.</td></tr>
+              <tr><td><code>update(dt)</code></td><td><code>(dt: number) =&gt; void</code></td><td>Calculates <code>force = (this.target - this.value) * this.stiffness - this.vel * this.damping</code>, updates <code>this.vel += force * dt</code>, and updates <code>this.value += this.vel * dt</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. INPUT & SAVE SLOTS -->
+      <section id="input-buffer">
+        <h3>4. Input Buffering, Gamepad Polling &amp; Save Slots</h3>
+
+        <div class="api-card">
+          <div class="api-header">
+            <span class="api-name">Input — Action Buffering &amp; Gamepad APIs</span>
+            <span class="badge">Class Fields &amp; Methods</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Member</th><th>Signature / Type</th><th>Detailed Behavior</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>bufferedAction</code></td><td><code>string | null = null</code></td><td>Currently queued action name awaiting consumption.</td></tr>
+              <tr><td><code>bufferTimer</code></td><td><code>number = 0</code></td><td>Remaining lifetime in seconds before <code>bufferedAction</code> expires.</td></tr>
+              <tr><td><code>buffer(action, windowSec = 0.15)</code></td><td><code>(action: string, windowSec?: number) =&gt; void</code></td><td>Sets <code>this.bufferedAction = action</code> and <code>this.bufferTimer = windowSec</code> (overwriting any prior buffered action).</td></tr>
+              <tr id="input-gamepad"><td><code>consumeBuffer(action)</code></td><td><code>(action: string) =&gt; boolean</code></td><td>If <code>this.bufferedAction === action &amp;&amp; this.bufferTimer &gt; 0</code>, resets <code>this.bufferedAction = null</code> and <code>this.bufferTimer = 0</code> and returns <code>true</code>. Otherwise returns <code>false</code> without clearing an unmatched action.</td></tr>
+              <tr><td><code>getGamepad(index = 0)</code></td><td><code>(index?: number) =&gt; Gamepad | null</code></td><td>Checks <code>typeof navigator !== 'undefined' &amp;&amp; navigator.getGamepads</code>, calls <code>navigator.getGamepads()</code>, and returns <code>pads[index] || null</code>.</td></tr>
+              <tr><td><code>update(dt, cam)</code></td><td><code>(dt: number, cam: Camera) =&gt; void</code></td><td>Replaces prior <code>updateWorldMouse(cam)</code> call in the game loop: subtracts <code>dt</code> from <code>bufferTimer</code> (clearing <code>bufferedAction = null</code> when <code>&lt;= 0</code>) and sets <code>mouse.worldPos.x = mouse.pos.x + cam.pos.x</code> and <code>mouse.worldPos.y = mouse.pos.y + cam.pos.y</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="storage">
+          <div class="api-header">
+            <span class="api-name">Storage</span>
+            <span class="badge">Exported Object / Static Namespace</span>
+          </div>
+          <p>
+            JSON-backed <code>localStorage</code> wrapper that automatically namespaces keys with
+            <code>veloce_slot_</code> and catches storage/quota/serialization errors.
+          </p>
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Signature</th><th>Return Value &amp; Behavior</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>save(slotKey, data)</code></td><td><code>(slotKey: string, data: any) =&gt; boolean</code></td><td>Writes <code>JSON.stringify(data)</code> to key <code>`veloce_slot_${slotKey}`</code>. Returns <code>true</code> on success, <code>false</code> if an error is thrown.</td></tr>
+              <tr><td><code>load(slotKey, fallback = null)</code></td><td><code>(slotKey: string, fallback?: any) =&gt; any</code></td><td>Reads <code>`veloce_slot_${slotKey}`</code>; if present, returns <code>JSON.parse(raw)</code>, otherwise returns <code>fallback</code>. Returns <code>fallback</code> on parse or storage error.</td></tr>
+              <tr><td><code>remove(slotKey)</code></td><td><code>(slotKey: string) =&gt; boolean</code></td><td>Calls <code>localStorage.removeItem(`veloce_slot_${slotKey}`)</code>. Returns <code>true</code> on success, <code>false</code> if an error is thrown.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. MULTI-D VECTORS -->
+      <section id="vec1d">
+        <h3>5. Multi-Dimensional Vector Additions (<code>Vec1D</code>, <code>Vec3D</code>, <code>Vec4D</code>, <code>Vec5D</code>)</h3>
+
+        <div class="api-card" id="vec1d-card">
+          <div class="api-header">
+            <span class="api-name">Vec1D</span>
+            <span class="badge">Added Method</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Signature</th><th>Formula &amp; Return</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>lerp(v, t)</code></td><td><code>(v: Vec1D, t: number) =&gt; Vec1D</code></td><td>Returns a new <code>Vec1D(MathEx.lerp(this.x, v.x, t))</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="vec3d">
+          <div class="api-header">
+            <span class="api-name">Vec3D</span>
+            <span class="badge">Added Methods</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Signature</th><th>Formula &amp; Return</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>add(v)</code></td><td><code>(v: Vec3D) =&gt; Vec3D</code></td><td>Returns <code>new Vec3D(this.x + v.x, this.y + v.y, this.z + v.z)</code>.</td></tr>
+              <tr><td><code>sub(v)</code></td><td><code>(v: Vec3D) =&gt; Vec3D</code></td><td>Returns <code>new Vec3D(this.x - v.x, this.y - v.y, this.z - v.z)</code>.</td></tr>
+              <tr><td><code>scale(s)</code></td><td><code>(s: number) =&gt; Vec3D</code></td><td>Returns <code>new Vec3D(this.x * s, this.y * s, this.z * s)</code>.</td></tr>
+              <tr><td><code>dot(v)</code></td><td><code>(v: Vec3D) =&gt; number</code></td><td>Returns scalar <code>this.x * v.x + this.y * v.y + this.z * v.z</code>.</td></tr>
+              <tr><td><code>cross(v)</code></td><td><code>(v: Vec3D) =&gt; Vec3D</code></td><td>Returns <code>new Vec3D(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x)</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="vec4d">
+          <div class="api-header">
+            <span class="api-name">Vec4D</span>
+            <span class="badge">Added Methods</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Signature</th><th>Formula &amp; Return</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>add(v)</code></td><td><code>(v: Vec4D) =&gt; Vec4D</code></td><td>Returns component-wise sum across <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>.</td></tr>
+              <tr><td><code>sub(v)</code></td><td><code>(v: Vec4D) =&gt; Vec4D</code></td><td>Returns component-wise difference across <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>.</td></tr>
+              <tr><td><code>scale(s)</code></td><td><code>(s: number) =&gt; Vec4D</code></td><td>Returns <code>new Vec4D(this.x * s, this.y * s, this.z * s, this.w * s)</code>.</td></tr>
+              <tr><td><code>dot(v)</code></td><td><code>(v: Vec4D) =&gt; number</code></td><td>Returns <code>this.x * v.x + this.y * v.y + this.z * v.z + this.w * v.w</code>.</td></tr>
+              <tr><td><code>lerp(v, t)</code></td><td><code>(v: Vec4D, t: number) =&gt; Vec4D</code></td><td>Interpolates each component <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code> with <code>MathEx.lerp(..., t)</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-card" id="vec5d">
+          <div class="api-header">
+            <span class="api-name">Vec5D</span>
+            <span class="badge">Added Methods</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Signature</th><th>Formula &amp; Return</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>add(o)</code></td><td><code>(o: Vec5D) =&gt; Vec5D</code></td><td>Returns component-wise sum across <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>, <code>v</code>.</td></tr>
+              <tr><td><code>sub(o)</code></td><td><code>(o: Vec5D) =&gt; Vec5D</code></td><td>Returns component-wise difference across <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>, <code>v</code>.</td></tr>
+              <tr><td><code>scale(s)</code></td><td><code>(s: number) =&gt; Vec5D</code></td><td>Returns <code>new Vec5D(this.x * s, this.y * s, this.z * s, this.w * s, this.v * s)</code>.</td></tr>
+              <tr><td><code>dot(o)</code></td><td><code>(o: Vec5D) =&gt; number</code></td><td>Returns <code>this.x * o.x + this.y * o.y + this.z * o.z + this.w * o.w + this.v * o.v</code>.</td></tr>
+              <tr><td><code>lerp(o, t)</code></td><td><code>(o: Vec5D, t: number) =&gt; Vec5D</code></td><td>Interpolates each component <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>, <code>v</code> with <code>MathEx.lerp(..., t)</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. SCENE & GAME HOOKS -->
+      <section id="scene-tweens">
+        <h3>6. Scene &amp; Game Tween Lifecycle Hooks</h3>
+
+        <div class="api-card">
+          <div class="api-header">
+            <span class="api-name">Scene.tweens &amp; Scene.addTween(tween)</span>
+            <span class="badge">Scene Additions</span>
+          </div>
+          <ul class="detail-list">
+            <li><code>this.tweens</code>: Initialized to <code>[]</code> in <code>Scene.constructor()</code>.</li>
+            <li><code>addTween(tween)</code>: Pushes <code>tween</code> onto <code>this.tweens</code> and returns <code>tween</code>.</li>
+            <li><code>update(dt)</code>: Iterates <code>this.tweens</code> calling <code>tw.update(dt)</code> on each tween, then filters out completed tweens via <code>this.tweens = this.tweens.filter((tw) =&gt; !tw.finished)</code>.</li>
+          </ul>
+        </div>
+
+        <div class="api-card" id="game-tweens">
+          <div class="api-header">
+            <span class="api-name">Game.switchScene(name) &amp; Game._loop(now)</span>
+            <span class="badge">Game Additions</span>
+          </div>
+          <ul class="detail-list">
+            <li><code>switchScene(name)</code>: Resets <code>this.currentScene.tweens = []</code> alongside <code>entities</code> and <code>timers</code> before invoking <code>this.currentScene.init()</code>.</li>
+            <li><code>_loop(now)</code>: Calls <code>this.input.update(dt, this.camera)</code> each frame so input buffers tick down with frame delta time and world mouse coordinates stay synchronized with the camera.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
