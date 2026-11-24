@@ -1,0 +1,43 @@
+{
+  "name": "veloce-omni",
+  "version": "1.0.0",
+  "description": "Zero-dependency modular JavaScript game library featuring 0D, 1D, 2D, 2.5D, 3D, 4D, and 5D math and projections, raycasting, procedural noise and dungeon grids, tweens and springs, input buffering, gamepad polling, and save slots.",
+  "type": "module",
+  "main": "./veloce-omni.js",
+  "module": "./veloce-omni.js",
+  "exports": {
+    ".": "./veloce-omni.js",
+    "./docs": "./docs.html"
+  },
+  "files": [
+    "veloce-omni.js",
+    "docs.html",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check veloce-omni.js",
+    "serve": "npx --yes serve ."
+  },
+  "keywords": [
+    "game-engine",
+    "game-library",
+    "0d",
+    "1d",
+    "2d",
+    "2.5d",
+    "3d",
+    "4d",
+    "5d",
+    "canvas",
+    "raycasting",
+    "pathfinding",
+    "procedural-generation",
+    "tween",
+    "spring",
+    "zero-dependency"
+  ],
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
