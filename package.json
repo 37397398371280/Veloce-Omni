@@ -5,6 +5,10 @@
   "type": "module",
   "main": "./veloce-omni.js",
   "module": "./veloce-omni.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/37397398371280/Veloco-Omni.git"
+  },
   "exports": {
     ".": "./veloce-omni.js",
     "./docs": "./docs.html"
